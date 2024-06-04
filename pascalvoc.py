@@ -386,7 +386,8 @@ f = open(os.path.join(savePath, 'results.txt'), 'w')
 f.write('Object Detection Metrics\n')
 f.write('https://github.com/rafaelpadilla/Object-Detection-Metrics\n\n\n')
 f.write('Average Precision (AP), Precision and Recall per class:')
-
+g = open(os.path.join(savePath, 'table.txt'), 'w')
+g.write('Class,AP,Precision,Recall' + '\n')
 # each detection is a class
 for metricsPerClass in detections:
 
@@ -404,10 +405,13 @@ for metricsPerClass in detections:
         acc_AP = acc_AP + ap
         prec = ['%.2f' % p for p in precision]
         rec = ['%.2f' % r for r in recall]
+        prec1 = (prec or [0])[-1]
+        rec1 = (rec or [0])[-1]
         ap_str = "{0:.2f}%".format(ap * 100)
         # ap_str = "{0:.4f}%".format(ap * 100)
         print('AP: %s (%s)' % (ap_str, cl))
         f.write('\n\nClass: %s' % cl)
+        g.write(cl + "," + ap_str + "," + str(prec1) + "," + str(rec1) + '\n') 
         f.write('\nAP: %s' % ap_str)
         f.write('\nPrecision: %s' % prec)
         f.write('\nRecall: %s' % rec)
