@@ -283,8 +283,8 @@ class Evaluator:
             #                 xytext=vecPositions[idx], textcoords='offset points',
             #                 arrowprops=dict(arrowstyle="->", connectionstyle="arc3"),
             #                 bbox=box)
-            if savePath is not None:
-                plt.savefig(os.path.join(savePath, str(classId) + '.png'))
+            # if savePath is not None:
+            #     plt.savefig(os.path.join(savePath, str(classId) + '.png'))
             if showGraphic is True:
                 plt.show()
                 # plt.waitforbuttonpress()
